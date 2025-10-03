@@ -72,6 +72,19 @@
         </dependency>
 
 
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.7.7</version>
+            </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
+        </dependency>
+
+
+
     </dependencies>
     <build>
             <plugins>
@@ -108,15 +121,7 @@
                 </plugin>
 
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*.sql</include>
-                    <include>**/*.db</include>
-                </includes>
-            </resource>
-        </resources>
+
     </build>
 
 </project>
