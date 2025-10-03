@@ -1,9 +1,13 @@
 package ru.exchange.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class Currency {
+@AllArgsConstructor
+@NoArgsConstructor
+public class CurrencyModel {
     private Long id;
     private String code;
     private String fullName;
