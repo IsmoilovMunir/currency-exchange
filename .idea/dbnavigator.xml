@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
@@ -65,7 +65,8 @@ INSERT INTO exchange_rates (base_currency_id, target_currency_id, rate) VALUES
 (2, 3, 0.85),   -- EUR to GBP
 (3, 1, 1.28);   -- GBP to USD
 
-select * from currencies;]]></console>
+select * from exchange_rates
+where id = 8;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -74,7 +75,6 @@ select * from currencies;]]></console>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
       <object connection-id="712eedaf-b53c-4c9c-b930-3a2df15fe639" object-ref="consoles/Connection" />
-      <object connection-id="712eedaf-b53c-4c9c-b930-3a2df15fe639" object-ref="schemas/public/tables/currencies" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
