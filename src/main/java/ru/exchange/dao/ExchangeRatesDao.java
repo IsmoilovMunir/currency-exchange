@@ -33,7 +33,7 @@ public class ExchangeRatesDao {
             """;
 
     public ExchangeRates update(ExchangeRates exchangeRates) {
-        try (var connection = ConnectionManger.open();
+        try (var connection = ConnectionManger.get();
              var statement = connection.prepareStatement(UPDATE_SQL)) {
             statement.setLong(1, exchangeRates.getBaseCurrencyId());
             statement.setLong(2, exchangeRates.getTargetCurrencyId());
@@ -51,7 +51,7 @@ public class ExchangeRatesDao {
     }
 
     public ExchangeRates save(ExchangeRates exchangeRates) {
-        try (var connection = ConnectionManger.open();
+        try (var connection = ConnectionManger.get();
              var statement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
             statement.setLong(1, exchangeRates.getBaseCurrencyId());
             statement.setLong(2, exchangeRates.getTargetCurrencyId());
@@ -67,7 +67,7 @@ public class ExchangeRatesDao {
     }
 
     public ExchangeRates findByCodes(String baseCode, String targetCode) {
-        try (var connection = ConnectionManger.open();
+        try (var connection = ConnectionManger.get();
              var statement = connection.prepareStatement(FIND_BY_CODES)) {
             statement.setInt(1, Integer.parseInt(baseCode));
             statement.setInt(2, Integer.parseInt(targetCode));
@@ -83,7 +83,7 @@ public class ExchangeRatesDao {
     }
 
     public List<ExchangeRates> findAll() {
-        try (var connection = ConnectionManger.open();
+        try (var connection = ConnectionManger.get();
              var statement = connection.prepareStatement(FIND_ALL)) {
             List<ExchangeRates> exchangeRates = new ArrayList<>();
             var result = statement.executeQuery();

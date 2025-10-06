@@ -27,7 +27,8 @@ public class CurrencyDao {
             """;
 
     public List<CurrencyModel> findAll() {
-        try (var connection = ConnectionManger.open(); var statement = connection.prepareStatement(FIND_ALL_SQL)) {
+        try (var connection = ConnectionManger.get();
+             var statement = connection.prepareStatement(FIND_ALL_SQL)) {
             List<CurrencyModel> currencies = new ArrayList<>();
             var result = statement.executeQuery();
             while (result.next()) {
@@ -35,12 +36,12 @@ public class CurrencyDao {
             }
             return currencies;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Database error in findAll", e);
         }
     }
 
     public CurrencyModel findByCode(String code) {
-        try (var connection = ConnectionManger.open();
+        try (var connection = ConnectionManger.get();
              var statement = connection.prepareStatement(FIND_BY_CODE)) {
             statement.setString(1, code);
             var result = statement.executeQuery();
@@ -58,7 +59,7 @@ public class CurrencyDao {
     }
 
     public CurrencyModel save(CurrencyModel currencyModel) {
-        try (var connection = ConnectionManger.open();
+        try (var connection = ConnectionManger.get();
              var statement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, currencyModel.getCode());
             statement.setString(2, currencyModel.getFullName());
@@ -74,11 +75,12 @@ public class CurrencyDao {
     }
 
     public CurrencyModel build(ResultSet result) throws SQLException {
-        return new CurrencyModel(
-                result.getLong("id"),
-                result.getString("code"),
-                result.getString("full_name"),
-                result.getString("sign"));
+        CurrencyModel currency = new CurrencyModel();
+        currency.setId(result.getLong("id"));
+        currency.setCode(result.getString("code"));
+        currency.setFullName(result.getString("full_name"));
+        currency.setSign(result.getString("sign"));
+        return currency;
     }
 
 

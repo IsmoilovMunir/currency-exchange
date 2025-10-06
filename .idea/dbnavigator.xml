@@ -73,9 +73,7 @@ where id = 8;]]></console>
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="712eedaf-b53c-4c9c-b930-3a2df15fe639" object-ref="consoles/Connection" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="712eedaf-b53c-4c9c-b930-3a2df15fe639" />

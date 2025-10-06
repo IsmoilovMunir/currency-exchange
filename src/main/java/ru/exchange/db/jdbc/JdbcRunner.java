@@ -15,7 +15,7 @@ public class JdbcRunner {
                 select * from currencies;
                 """;
 
-       try (Connection connection = ConnectionManger.open();
+       try (Connection connection = ConnectionManger.get();
         var statement = connection.createStatement()){
            var result = statement.executeQuery(sql);
            while (result.next()){
