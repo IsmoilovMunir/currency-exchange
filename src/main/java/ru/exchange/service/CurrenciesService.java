@@ -17,7 +17,7 @@ public class CurrenciesService {
         return currencyDao.findAll().stream().map(currency ->
                 new CurrencyDto(currency.getId(),
                         currency.getCode(),
-                        currency.getFullName(),
+                        currency.getName(),
                         currency.getSign())).collect(Collectors.toList());
     }
 
@@ -30,21 +30,21 @@ public class CurrenciesService {
         return new CurrencyDto(
                 currencyModel.getId(),
                 currencyModel.getCode(),
-                currencyModel.getFullName(),
+                currencyModel.getName(),
                 currencyModel.getSign()
         );
     }
     public CurrencyResponseDto save(CurrencyRequestDto dto){
         CurrencyModel currency  = new CurrencyModel();
         currency.setCode(dto.getCode());
-        currency.setFullName(dto.getFullName());
+        currency.setName(dto.getName());
         currency.setSign(dto.getSign());
 
         CurrencyModel savedCurrency = currencyDao.save(currency);
         return new CurrencyResponseDto(
                 savedCurrency.getId(),
                 savedCurrency.getCode(),
-                savedCurrency.getFullName(),
+                savedCurrency.getName(),
                 savedCurrency.getSign()
         );
     }

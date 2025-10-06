@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class CurrencyResponseDto {
     private Long id;
     private String code;
-    private String fullName;
+    private String name;
     private String sign;
 }

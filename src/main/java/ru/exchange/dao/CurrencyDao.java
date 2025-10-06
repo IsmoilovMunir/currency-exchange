@@ -12,17 +12,17 @@ import java.util.List;
 public class CurrencyDao {
     private static final CurrencyDao INSTANCE = new CurrencyDao();
     private static final String FIND_ALL_SQL = """
-            SELECT id,code,full_name,sign
+            SELECT id,code,name,sign
             FROM currencies;
             """;
     private static final String FIND_BY_CODE = """
-            SELECT id, code, full_name, sign
+            SELECT id, code, name, sign
             FROM currencies
             WHERE code = ?
             """;
     private static final String SAVE_SQL = """
             INSERT INTO currencies 
-            (code, full_name, sign)
+            (code, name, sign)
             VALUES (?, ?, ?);
             """;
 
@@ -62,7 +62,7 @@ public class CurrencyDao {
         try (var connection = ConnectionManger.get();
              var statement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, currencyModel.getCode());
-            statement.setString(2, currencyModel.getFullName());
+            statement.setString(2, currencyModel.getName());
             statement.setString(3, currencyModel.getSign());
             statement.executeUpdate();
             var keys = statement.getGeneratedKeys();
@@ -78,7 +78,7 @@ public class CurrencyDao {
         CurrencyModel currency = new CurrencyModel();
         currency.setId(result.getLong("id"));
         currency.setCode(result.getString("code"));
-        currency.setFullName(result.getString("full_name"));
+        currency.setName(result.getString("name"));
         currency.setSign(result.getString("sign"));
         return currency;
     }

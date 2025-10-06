@@ -1,15 +1,20 @@
 package ru.exchange.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.exchange.model.CurrencyModel;
+
+import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class ExchangeRatesDto {
     private Long id;
-    private CurrencyDto baseCurrency;
-    private CurrencyDto targetCurrency;
-    private Double rate;
+    private CurrencyModel baseCurrency;
+    private CurrencyModel targetCurrency;
+    private BigDecimal rate;
+
+
 }

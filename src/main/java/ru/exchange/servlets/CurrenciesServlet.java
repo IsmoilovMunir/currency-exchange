@@ -53,7 +53,7 @@ public class CurrenciesServlet extends HttpServlet {
         // Читаем JSON из тела запроса → в объект CurrencyModel
 
         // Проверяем обязательные поля
-        if (dto.getFullName() == null || dto.getCode() == null || dto.getSign() == null) {
+        if (dto.getName() == null || dto.getCode() == null || dto.getSign() == null) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().write("{\"error\":\"Missing required parameters\"}");
             return;

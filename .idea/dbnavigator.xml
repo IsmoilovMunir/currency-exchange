@@ -27,7 +27,7 @@
       <console name="Connection" type="STANDARD" schema="public" session="Main"><![CDATA[CREATE TABLE IF NOT EXISTS currencies (
     id SERIAL PRIMARY KEY ,
     code VARCHAR(3) NOT NULL UNIQUE,
-    full_name VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     sign VARCHAR(10) NOT NULL
 );
 drop table currencies;
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS exchange_rates (
 CREATE UNIQUE INDEX IF NOT EXISTS idx_currencies_code ON Currencies(Code);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_exchange_rates_pair ON exchange_rates(base_currency_id, target_currency_id);
 
-INSERT INTO currencies (code, full_name, sign) VALUES
+INSERT INTO currencies (code, name, sign) VALUES
 ('USD', 'US Dollar', '$'),
 ('EUR', 'Euro', '€'),
 ('GBP', 'British Pound', '£'),
@@ -66,14 +66,16 @@ INSERT INTO exchange_rates (base_currency_id, target_currency_id, rate) VALUES
 (3, 1, 1.28);   -- GBP to USD
 
 select * from exchange_rates
-where id = 8;]]></console>
+where id = 1;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="712eedaf-b53c-4c9c-b930-3a2df15fe639" object-ref="consoles/Connection" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="712eedaf-b53c-4c9c-b930-3a2df15fe639" />

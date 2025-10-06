@@ -1,7 +1,6 @@
 package ru.exchange.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +14,6 @@ import lombok.ToString;
 public class CurrencyModel {
     private Long id;
     private String code;
-    private String fullName;
+    private String name;
     private String sign;
 }

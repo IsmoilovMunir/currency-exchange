@@ -6,6 +6,6 @@ import lombok.Data;
 public class CurrencyRequestDto {
     private Long id;
     private String code;
-    private String fullName;
+    private String name;
     private String sign;
 }
